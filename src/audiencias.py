@@ -4,6 +4,7 @@ Created on 12 oct. 2020
 
 @author: anton
 '''
+import csv
 def lee_audiencias(fichero):
     ''' Lee el fichero de entrada y devuelve una lista de audiencias
     
@@ -31,6 +32,14 @@ def lee_audiencias(fichero):
             tupla = (edicion, share)
             # Añadimos la tupla a la lista
             audiencias.append(tupla)
+    return audiencias
+
+def lee_audiencias2 (fichero):
+    audiencias = []
+    with open(fichero, encoding='utf-8') as f:
+        lector = csv.reader(f)
+        audiencias = [(int(edicion), float(share))
+                      for edicion, share in lector]
     return audiencias
 
 def calcula_ediciones(audiencias):
